@@ -10,7 +10,7 @@ Run:  streamlit run app.py
 import streamlit as st
 
 st.set_page_config(
-    page_title="Global Energy Market Dashboard",
+    page_title="글로벌 에너지 마켓 대시보드",
     page_icon="⚡",
     layout="wide",
     initial_sidebar_state="expanded",
@@ -18,12 +18,12 @@ st.set_page_config(
 
 # ── Sidebar — EIA API key (optional) ─────────────────────────────────────────
 with st.sidebar:
-    st.title("⚡ Energy Dashboard")
-    st.caption("Global LPG · Petrochemical · Energy Transition")
+    st.title("⚡ 에너지 대시보드")
+    st.caption("글로벌 LPG · 석유화학 · 에너지 전환")
     st.divider()
 
     eia_key = st.text_input(
-        "EIA API Key (optional)",
+        "EIA API Key (선택)",
         type="password",
         placeholder="무료 등록: eia.gov/opendata",
         help="없으면 유가·환율·뉴스만 실시간 표시됩니다. "
@@ -38,13 +38,13 @@ with st.sidebar:
         - 뉴스: Reuters · IEA · EIA · Oil Price RSS
         """
     )
-    st.caption("Made as a domain-learning project — 2026")
+    st.caption("개인 도메인 학습 프로젝트 — 2026")
 
 # Store EIA key in session state so pages can access it
 st.session_state["eia_key"] = eia_key or None
 
 # ── Landing page ──────────────────────────────────────────────────────────────
-st.title("Global Energy Market Dashboard")
+st.title("글로벌 에너지 마켓 대시보드")
 st.markdown(
     "LPG / 석유화학 / 에너지 전환 시장의 핵심 지표를 한 화면에서 추적합니다. "
     "왼쪽 사이드바의 페이지를 선택하세요."
@@ -52,10 +52,10 @@ st.markdown(
 
 col1, col2, col3, col4 = st.columns(4)
 with col1:
-    st.info("**📊 Price Overview**\n\nBrent·WTI·프로판·환율\n실시간 스냅샷")
+    st.info("**📊 가격 현황**\n\nBrent·WTI·프로판·환율\n실시간 스냅샷")
 with col2:
-    st.info("**⚗️ Petrochemical Economics**\n\n납사 vs 프로판 스프레드\nPDH 마진 지표")
+    st.info("**⚗️ 석유화학 경제성**\n\n납사 vs 프로판 스프레드\nPDH 마진 지표")
 with col3:
-    st.info("**🌍 Demand & Transition**\n\n아시아 LPG 수요\nEV·신재생 전환 속도")
+    st.info("**🌍 수요 & 에너지 전환**\n\n아시아 LPG 수요\nEV·신재생 전환 속도")
 with col4:
-    st.info("**📰 News Radar**\n\n에너지 키워드 뉴스\n실시간 피드 + 필터")
+    st.info("**📰 뉴스 레이더**\n\n에너지 키워드 뉴스\n실시간 피드 + 필터")

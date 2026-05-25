@@ -65,6 +65,9 @@ def fetch_price_history(key: str, period: str = "1y") -> pd.DataFrame:
         return pd.DataFrame()
     try:
         df = yf.download(symbol, period=period, interval="1d", progress=False, auto_adjust=True)
+        # yfinance >= 0.2.40 returns MultiIndex columns for single tickers
+        if isinstance(df.columns, pd.MultiIndex):
+            df.columns = df.columns.droplevel(1)
         df.index = pd.to_datetime(df.index)
         return df
     except Exception:

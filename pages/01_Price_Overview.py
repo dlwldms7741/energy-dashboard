@@ -18,7 +18,7 @@ from data.fetchers import (
     calc_pdh_proxy_spread,
 )
 
-st.set_page_config(page_title="Price Overview", page_icon="📊", layout="wide")
+st.set_page_config(page_title="가격 현황", page_icon="📊", layout="wide")
 st.title("📊 Price Overview")
 st.caption("실시간 유가·환율·미국 프로판 현물가 — Yahoo Finance (15분 딜레이) + EIA API")
 

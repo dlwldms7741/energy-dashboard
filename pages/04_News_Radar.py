@@ -11,7 +11,7 @@ import sys, os
 sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
 from data.fetchers import fetch_news, ENERGY_KEYWORDS, NEWS_FEEDS
 
-st.set_page_config(page_title="News Radar", page_icon="📰", layout="wide")
+st.set_page_config(page_title="뉴스 레이더", page_icon="📰", layout="wide")
 st.title("📰 News Radar")
 st.caption("글로벌 에너지 뉴스 실시간 수집 — Reuters · IEA · EIA · Oil Price")
 

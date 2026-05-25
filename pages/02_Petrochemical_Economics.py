@@ -12,7 +12,7 @@ import sys, os
 sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
 from data.fetchers import fetch_price_history, fetch_us_propane_price
 
-st.set_page_config(page_title="Petrochemical Economics", page_icon="⚗️", layout="wide")
+st.set_page_config(page_title="석유화학 경제성", page_icon="⚗️", layout="wide")
 st.title("⚗️ Petrochemical Economics")
 st.caption("납사 vs 프로판 원료 경쟁 · PDH 마진 구조 · 아시아 석화 수요 지도")
 

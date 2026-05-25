@@ -12,7 +12,7 @@ import sys, os
 sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
 from data.fetchers import fetch_us_lpg_exports
 
-st.set_page_config(page_title="Demand & Transition", page_icon="🌍", layout="wide")
+st.set_page_config(page_title="수요 & 에너지 전환", page_icon="🌍", layout="wide")
 st.title("🌍 Demand & Energy Transition")
 st.caption("아시아 LPG 수요 동향 · EV 확산 속도 · 신재생에너지 성장")
 

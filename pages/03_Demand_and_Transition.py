@@ -109,7 +109,63 @@ with col2:
 
 st.divider()
 
-# ── 3. EV 확산 vs LPG 수송 수요 ──────────────────────────────────────────────
+# ── 3. 베트남 LPG 시장 — E1의 2nd Home 전략 ──────────────────────────────────
+st.subheader("베트남 LPG 시장 — E1의 핵심 수출 전략 시장")
+st.caption("동남아에서 가장 빠르게 성장하는 LPG 시장. E1이 '2nd Home'으로 지정한 전략 국가입니다.")
+
+vn_data = pd.DataFrame({
+    "연도":           [2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024],
+    "LPG수입량_만톤":  [195,  210,  230,  215,  240,  260,  280,  300],
+    "용도별_가정용":   [52,   51,   50,   51,   50,   49,   48,   47],
+    "용도별_산업용":   [30,   31,   32,   31,   32,   33,   34,   35],
+    "용도별_수송기타": [18,   18,   18,   18,   18,   18,   18,   18],
+})
+
+col_vn1, col_vn2 = st.columns(2)
+
+with col_vn1:
+    fig_vn = px.bar(
+        vn_data, x="연도", y="LPG수입량_만톤",
+        title="베트남 LPG 수입량 추이 (만 톤/년)",
+        labels={"LPG수입량_만톤": "만 톤"},
+        color_discrete_sequence=["#e63946"],
+        text="LPG수입량_만톤",
+    )
+    fig_vn.update_traces(textposition="outside")
+    fig_vn.update_layout(margin=dict(l=0, r=0, t=40, b=0))
+    st.plotly_chart(fig_vn, use_container_width=True)
+    st.caption("⚠️ 참고용 개요 데이터 — IEA/BP Statistical Review 기반")
+
+with col_vn2:
+    use_cols = ["용도별_가정용", "용도별_산업용", "용도별_수송기타"]
+    latest_use = vn_data[use_cols].iloc[-1]
+    fig_vn2 = px.pie(
+        values=latest_use.values,
+        names=["가정용 (취사·난방)", "산업·석화용", "수송·기타"],
+        title="베트남 LPG 용도별 비중 (2024 추정)",
+        color_discrete_sequence=["#e63946", "#457b9d", "#2a9d8f"],
+    )
+    fig_vn2.update_layout(margin=dict(l=0, r=0, t=40, b=0))
+    st.plotly_chart(fig_vn2, use_container_width=True)
+
+with st.expander("💡 왜 베트남인가 — E1의 2nd Home 전략"):
+    st.markdown(
+        """
+        | 항목 | 내용 |
+        |------|------|
+        | **시장 성장성** | 1억 명 인구 + 도시화 가속 → 가정용 LPG 수요 연 5~8% 성장 |
+        | **인프라 부족** | 도시가스 보급률 낮음 → LPG가 주요 취사 연료로 장기간 유지 |
+        | **E1 전략** | 베트남 현지 유통망 구축, 직접 판매 네트워크 확대 ('2nd Home' 지정) |
+        | **수출 구조** | 한국 → 베트남 직수출 + 현지 재판매로 마진 다층 확보 |
+        | **경쟁 구도** | 중동·말레이시아산과 경쟁 — 미국 Spot 저가 구매 후 경쟁력 있는 가격 제공 가능 |
+        | **리스크** | 베트남 정부 LPG 가격 규제, 동남아 석화 설비 증설 시 용도 전환 |
+        """
+    )
+    st.caption("💡 면접 포인트: '베트남 LPG 수요는 도시화와 함께 가정용 중심으로 성장하고 있으며, E1은 현지 유통망 확보를 통해 중동 경쟁사 대비 차별화된 공급 안정성을 제공합니다.'")
+
+st.divider()
+
+# ── 5. EV 확산 vs LPG 수송 수요 ──────────────────────────────────────────────
 st.subheader("전기차(EV) 확산 속도 — LPG 수송 수요 위협 요인")
 
 ev_data = pd.DataFrame({
@@ -169,7 +225,7 @@ with st.expander("💡 EV 확산이 LPG 시장에 의미하는 것"):
 
 st.divider()
 
-# ── 4. 글로벌 신재생에너지 성장 ──────────────────────────────────────────────
+# ── 6. 글로벌 신재생에너지 성장 ──────────────────────────────────────────────
 st.subheader("글로벌 신재생에너지 성장 — 에너지 전환 속도")
 
 re_data = pd.DataFrame({
